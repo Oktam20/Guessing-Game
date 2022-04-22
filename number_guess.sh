@@ -6,7 +6,7 @@ COUNTER=0
 GAME(){
   echo "Guess the secret number between 1 and 1000:"
   RANDOM_NUM=$(( $RANDOM % 1000 + 1 ))
-  echo $RANDOM_NUM
+
   while [[ $GUESS != $RANDOM_NUM ]]
   do
     read GUESS
@@ -26,7 +26,7 @@ GAME(){
       let COUNTER++
     fi
   done
-  echo "Tries:" $COUNTER
+  echo "You guessed it in $COUNTER tries. The secret number was $RANDOM_NUM. Nice job!"
 }
 
 read USERNAME
