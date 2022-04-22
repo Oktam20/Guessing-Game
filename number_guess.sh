@@ -27,6 +27,8 @@ GAME(){
     fi
   done
   echo "You guessed it in $COUNTER tries. The secret number was $RANDOM_NUM. Nice job!"
+  PLAYER_ID=$($PSQL "SELECT player_id FROM players WHERE name='$1';")
+  INSRT=$($PSQL "INSERT INTO games(player_id, number_of_tries) VALUES($PLAYER_ID, $COUNTER);")
 }
 
 echo "Enter your username:"
@@ -45,10 +47,10 @@ then
 
   echo "Welcome back $USER! You have played $PLAYED games, and your best game took $BEST guesses."
   done
-  GAME
+  GAME $USER
 
 else
   echo "Welcome, $USERNAME! It looks like this is your first time here."
   INSRT=$($PSQL "INSERT INTO players(name) VALUES('$USERNAME');")
-  GAME
+  GAME $USERNAME
 fi
