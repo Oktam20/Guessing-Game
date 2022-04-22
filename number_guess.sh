@@ -45,7 +45,7 @@ then
     BEST=0
   fi
 
-  echo "Welcome back $USER! You have played $PLAYED games, and your best game took $BEST guesses."
+  echo "Welcome back, $USER! You have played $PLAYED games, and your best game took $BEST guesses."
   done
   GAME $USER
 
