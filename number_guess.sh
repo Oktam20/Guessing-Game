@@ -29,6 +29,7 @@ GAME(){
   echo "You guessed it in $COUNTER tries. The secret number was $RANDOM_NUM. Nice job!"
 }
 
+echo "Enter your username:"
 read USERNAME
 
 USER=$($PSQL "SELECT name FROM players WHERE name='$USERNAME';")
