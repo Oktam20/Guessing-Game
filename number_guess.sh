@@ -2,6 +2,11 @@
 
 PSQL="psql --username=freecodecamp --dbname=postgres -t --no-align -c"
 
+GAME(){
+  echo "Guess the secret number between 1 and 1000:"
+  RANDOM_NUM=$(( $RANDOM % 1000 + 1 ))
+}
+
 read USERNAME
 
 USER=$($PSQL "SELECT name FROM players WHERE name='$USERNAME';")
@@ -16,9 +21,11 @@ then
   fi
 
   echo "Welcome back $USER! You have played $PLAYED games, and your best game took $BEST guesses."
+  GAME
   done
 
 else
   echo "Welcome, $USERNAME! It looks like this is your first time here."
   INSRT=$($PSQL "INSERT INTO players(name) VALUES('$USERNAME');")
+  GAME
 fi
